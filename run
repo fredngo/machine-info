@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+java -cp './jna-5.12.1.jar:.' MachineInfo
