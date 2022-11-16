@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class MachineInfo {
@@ -81,6 +83,29 @@ public class MachineInfo {
         System.out.println("An error occurred.");
         e.printStackTrace();
       }
+    }
+
+    System.out.println("--------------------------------------------");
+    System.out.println("Parsing from /etc/os-release");
+    System.out.println("--------------------------------------------");
+    Properties osReleaseProperties = new Properties();
+    String file = "/etc/os-release";
+
+    try {
+      osReleaseProperties.load(new FileInputStream(file));
+
+      String id = osReleaseProperties.getProperty("ID");
+      String versionCodename = osReleaseProperties.getProperty("VERSION_CODENAME");
+
+      System.out.println("ID: " + id + "<<<");
+      System.out.println("VERSION_CODENAME: " + versionCodename + "<<<");
+    }
+    catch (FileNotFoundException e) {
+      System.out.println(file + " not found.");
+    }
+    catch (Exception e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
     }
   }
 }
