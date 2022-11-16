@@ -97,8 +97,8 @@ public class MachineInfo {
       String id = osReleaseProperties.getProperty("ID");
       String versionCodename = osReleaseProperties.getProperty("VERSION_CODENAME");
 
-      System.out.println("ID: " + id + "<<<");
-      System.out.println("VERSION_CODENAME: " + versionCodename + "<<<");
+      System.out.println("ID: " + id);
+      System.out.println("VERSION_CODENAME: " + versionCodename);
     }
     catch (FileNotFoundException e) {
       System.out.println(file + " not found.");
